@@ -1,53 +1,124 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>iu5gal · Progetti</title>
-<meta name="description" content="I progetti di iu5gal.">
+<title>iu5gal · Projects</title>
+<meta name="description" content="Projects by iu5gal. I progetti di iu5gal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    color-scheme: light dark;
-    --bg: #f6f4ef; --text: #1f2421; --muted: #5d645f;
-    --line: #d8d5cc; --accent: #b4441f;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #161917; --text: #ecebe6; --muted: #a2a8a3;
-      --line: #333935; --accent: #ef8a62;
-    }
+    color-scheme: dark;
+    --bg: #0d0f14; --panel: #151922; --text: #f1efe9; --muted: #9ba1ae;
+    --line: #2a3040; --hot: #ff6b35; --warm: #ffb547;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   }
   * { box-sizing: border-box; }
+  html[lang="en"] .it, html[lang="it"] .en { display: none; }
   body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 17px/1.6 Georgia, "Times New Roman", serif;
+    margin: 0; min-height: 100vh; color: var(--text); background-color: var(--bg);
+    background-image:
+      radial-gradient(700px 420px at 85% -5%, rgba(255,107,53,.2), transparent 70%),
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: auto, 40px 40px, 40px 40px;
+    font: 17px/1.6 "Space Grotesk", system-ui, sans-serif;
   }
-  main { max-width: 680px; margin: 0 auto; padding: 72px 20px; }
-  .mono, h2 + p.status, footer {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  .wrap { max-width: 880px; margin: 0 auto; padding: 24px 20px 48px; }
+  nav { display: flex; justify-content: space-between; align-items: center; font: 500 15px var(--mono); }
+  .switch { display: flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .switch button {
+    border: 0; border-radius: 999px; padding: 5px 13px; cursor: pointer;
+    background: none; color: var(--muted); font: 500 13px var(--mono);
   }
-  header p { margin: 0; font-size: 15px; color: var(--accent); }
-  h1 { margin: 8px 0 56px; font-size: clamp(36px, 8vw, 52px); line-height: 1.1; font-weight: 500; }
-  article { border-top: 1px solid var(--line); padding-top: 24px; }
-  h2 { margin: 0; font-size: 26px; font-weight: 500; }
-  p.status { margin: 4px 0 16px; font-size: 13px; color: var(--muted); }
-  footer { margin-top: 64px; font-size: 13px; color: var(--muted); }
-  a { color: var(--accent); }
+  html[lang="en"] [data-lang="en"], html[lang="it"] [data-lang="it"] { background: var(--hot); color: #0d0f14; }
+  .hero { padding: 88px 0 72px; }
+  h1 { margin: 0; font-size: clamp(44px, 10vw, 84px); line-height: 1; letter-spacing: -.03em; font-weight: 700; }
+  h1 em {
+    font-style: normal; color: transparent;
+    background: linear-gradient(90deg, var(--hot), var(--warm)); -webkit-background-clip: text; background-clip: text;
+  }
+  .card {
+    display: grid; grid-template-columns: 1fr 210px; gap: 32px; align-items: center;
+    padding: 32px; border: 1px solid var(--line); border-radius: 20px; background: var(--panel);
+    transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: var(--hot); transform: translateY(-3px); }
+  .status { display: inline-flex; align-items: center; gap: 8px; color: var(--warm); font: 500 13px var(--mono); }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--warm); animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: .3; } }
+  h2 { margin: 12px 0; font-size: 30px; line-height: 1.15; letter-spacing: -.02em; }
+  .card p { margin: 0 0 12px; color: var(--muted); }
+  .dial { width: 100%; max-width: 210px; display: block; margin: 0 auto; }
+  .dial text { fill: var(--text); font: 500 34px var(--mono); }
+  footer { margin-top: 56px; font: 13px var(--mono); }
+  a { color: var(--warm); }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; }
+  @media (max-width: 640px) {
+    .hero { padding: 64px 0 48px; }
+    .card { grid-template-columns: 1fr; padding: 24px; }
+    .dial { max-width: 170px; grid-row: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .status::before { animation: none; }
+    .card { transition: none; }
+    .card:hover { transform: none; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <p class="mono">iu5gal</p>
-    <h1>Progetti</h1>
+<div class="wrap">
+  <nav>
+    <span>iu5gal</span>
+    <div class="switch" role="group" aria-label="Language / Lingua">
+      <button type="button" data-lang="en" lang="en">EN</button>
+      <button type="button" data-lang="it" lang="it">IT</button>
+    </div>
+  </nav>
+  <header class="hero">
+    <h1 class="en">Things I <em>build.</em></h1>
+    <h1 class="it">Cose che <em>costruisco.</em></h1>
   </header>
-  <article>
-    <h2>Much Smarther Bridge</h2>
-    <p class="status">In sviluppo</p>
-    <p>Un bridge locale che porta il termostato BTicino Smarther di prima versione nei sistemi smart home, a partire da Apple Casa. Gira su un Raspberry Pi e punta a ricostruire il più fedelmente possibile il funzionamento nativo del termostato, senza sostituirlo.</p>
-    <p>Il codice sarà pubblicato qui su GitHub, con documentazione in italiano e in inglese, una volta testato e verificato.</p>
-  </article>
+  <main>
+    <article class="card">
+      <div>
+        <span class="status en">In development</span>
+        <span class="status it">In sviluppo</span>
+        <h2>Much Smarther Bridge</h2>
+        <div class="en">
+          <p>A local bridge that brings the first-generation BTicino Smarther thermostat into smart home systems, starting with Apple Home. It runs on a Raspberry Pi and aims to recreate the thermostat's native behaviour as faithfully as possible, without replacing it.</p>
+          <p>The code will be published here on GitHub, with documentation in English and Italian, once tested and verified.</p>
+        </div>
+        <div class="it">
+          <p>Un bridge locale che porta il termostato BTicino Smarther di prima versione nei sistemi smart home, a partire da Apple Casa. Gira su un Raspberry Pi e punta a ricostruire il più fedelmente possibile il funzionamento nativo del termostato, senza sostituirlo.</p>
+          <p>Il codice sarà pubblicato qui su GitHub, con documentazione in inglese e in italiano, una volta testato e verificato.</p>
+        </div>
+      </div>
+      <svg class="dial" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ffb547"/><stop offset="1" stop-color="#ff6b35"/></linearGradient></defs>
+        <circle cx="100" cy="100" r="82" fill="none" stroke="#2a3040" stroke-width="12" stroke-linecap="round" stroke-dasharray="386 515" transform="rotate(135 100 100)"/>
+        <circle cx="100" cy="100" r="82" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" stroke-dasharray="250 515" transform="rotate(135 100 100)"/>
+        <text x="100" y="112" text-anchor="middle">21°</text>
+      </svg>
+    </article>
+  </main>
   <footer><a href="https://github.com/iu5gal">github.com/iu5gal</a></footer>
-</main>
+</div>
+<script>
+  (function () {
+    var root = document.documentElement;
+    function set(lang, save) {
+      root.lang = lang;
+      document.title = lang === 'it' ? 'iu5gal · Progetti' : 'iu5gal · Projects';
+      if (save) { try { localStorage.setItem('lang', lang); } catch (e) {} }
+    }
+    try { if (localStorage.getItem('lang') === 'it') set('it'); } catch (e) {}
+    document.querySelectorAll('[data-lang]').forEach(function (b) {
+      b.addEventListener('click', function () { set(b.dataset.lang, true); });
+    });
+  })();
+</script>
 </body>
 </html>
