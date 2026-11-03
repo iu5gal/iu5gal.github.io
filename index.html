@@ -53,6 +53,14 @@
   .card p { margin: 0 0 12px; color: var(--muted); }
   .dial { width: 100%; max-width: 210px; display: block; margin: 0 auto; }
   .dial text { fill: var(--text); font: 500 34px var(--mono); }
+  section + section { margin-top: 64px; }
+  h3.sec { margin: 0 0 20px; font: 500 14px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--warm); }
+  .card.one { grid-template-columns: 1fr; }
+  .prs { list-style: none; margin: 16px 0; padding: 0; }
+  .prs li { padding: 10px 0; border-top: 1px solid var(--line); }
+  .prs a { text-decoration: none; }
+  .prs a:hover { text-decoration: underline; }
+  .prs b { font: 500 13px var(--mono); margin-right: 8px; }
   footer { margin-top: 56px; font: 13px var(--mono); }
   a { color: var(--warm); }
   button:focus-visible, a:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; }
@@ -82,6 +90,8 @@
     <h1 class="it">Cose che <em>costruisco.</em></h1>
   </header>
   <main>
+    <section>
+    <h3 class="sec"><span class="en">My projects</span><span class="it">I miei progetti</span></h3>
     <article class="card">
       <div>
         <span class="status en">In development</span>
@@ -103,6 +113,30 @@
         <text x="100" y="112" text-anchor="middle">21°</text>
       </svg>
     </article>
+    </section>
+    <section>
+    <h3 class="sec"><span class="en">My contributions</span><span class="it">I miei contributi</span></h3>
+    <article class="card one">
+      <div>
+        <span class="status en">Awaiting review</span>
+        <span class="status it">In attesa di revisione</span>
+        <h2>Greenlight</h2>
+        <p class="en">An open-source desktop client for Xbox console and cloud streaming. I contribute translations, including the Italian one, and fixes proposed as pull requests. Highlights:</p>
+        <p class="it">Un client desktop open source per lo streaming di console Xbox e cloud gaming. Contribuisco con traduzioni, tra cui quella italiana, e correzioni proposte come pull request. In evidenza:</p>
+        <ul class="prs">
+          <li><a href="https://github.com/unknownskl/greenlight/pull/1706"><b>#1706</b><span class="en">Italian translation</span><span class="it">Traduzione italiana</span></a></li>
+          <li><a href="https://github.com/unknownskl/greenlight/pull/1717"><b>#1717</b><span class="en">Six new languages</span><span class="it">Sei nuove lingue</span></a></li>
+          <li><a href="https://github.com/unknownskl/greenlight/pull/1719"><b>#1719</b><span class="en">Better language handling</span><span class="it">Gestione delle lingue migliorata</span></a></li>
+          <li><a href="https://github.com/unknownskl/greenlight/pull/1720"><b>#1720</b><span class="en">Controller input and vibration fix on macOS</span><span class="it">Correzione di controller e vibrazione su macOS</span></a></li>
+          <li><a href="https://github.com/unknownskl/greenlight/pull/1724"><b>#1724</b><span class="en">Microphone fix on macOS and microphone choice</span><span class="it">Correzione del microfono su macOS e scelta del microfono</span></a></li>
+          <li><a href="https://github.com/unknownskl/greenlight/pull/1707"><b>#1707</b><span class="en">Web UI fix with Express 5</span><span class="it">Correzione della Web UI con Express 5</span></a></li>
+          <li><a href="https://github.com/unknownskl/greenlight/pull/1723"><b>#1723</b><span class="en">Console power and refresh buttons</span><span class="it">Pulsanti di accensione e aggiornamento per le console</span></a></li>
+          <li><a href="https://github.com/unknownskl/greenlight/pull/1727"><b>#1727</b><span class="en">Mouse and keyboard improvements</span><span class="it">Miglioramenti a mouse e tastiera</span></a></li>
+        </ul>
+        <p><a href="https://github.com/unknownskl/greenlight/pulls?q=is%3Apr+author%3Aiu5gal"><span class="en">All my pull requests</span><span class="it">Tutte le mie pull request</span></a></p>
+      </div>
+    </article>
+    </section>
   </main>
   <footer><a href="https://github.com/iu5gal">github.com/iu5gal</a></footer>
 </div>
