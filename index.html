@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iu5gal · Progetti</title>
+<meta name="description" content="I progetti di iu5gal.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f6f4ef; --text: #1f2421; --muted: #5d645f;
+    --line: #d8d5cc; --accent: #b4441f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161917; --text: #ecebe6; --muted: #a2a8a3;
+      --line: #333935; --accent: #ef8a62;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.6 Georgia, "Times New Roman", serif;
+  }
+  main { max-width: 680px; margin: 0 auto; padding: 72px 20px; }
+  .mono, h2 + p.status, footer {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  header p { margin: 0; font-size: 15px; color: var(--accent); }
+  h1 { margin: 8px 0 56px; font-size: clamp(36px, 8vw, 52px); line-height: 1.1; font-weight: 500; }
+  article { border-top: 1px solid var(--line); padding-top: 24px; }
+  h2 { margin: 0; font-size: 26px; font-weight: 500; }
+  p.status { margin: 4px 0 16px; font-size: 13px; color: var(--muted); }
+  footer { margin-top: 64px; font-size: 13px; color: var(--muted); }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="mono">iu5gal</p>
+    <h1>Progetti</h1>
+  </header>
+  <article>
+    <h2>Much Smarther Bridge</h2>
+    <p class="status">In sviluppo</p>
+    <p>Un bridge locale che porta il termostato BTicino Smarther di prima versione nei sistemi smart home, a partire da Apple Casa. Gira su un Raspberry Pi e punta a ricostruire il più fedelmente possibile il funzionamento nativo del termostato, senza sostituirlo.</p>
+    <p>Il codice sarà pubblicato qui su GitHub, con documentazione in italiano e in inglese, una volta testato e verificato.</p>
+  </article>
+  <footer><a href="https://github.com/iu5gal">github.com/iu5gal</a></footer>
+</main>
+</body>
+</html>
