@@ -61,17 +61,30 @@
   .prs a { text-decoration: none; }
   .prs a:hover { text-decoration: underline; }
   .prs b { font: 500 13px var(--mono); margin-right: 8px; }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  a.kofi {
+    display: inline-flex; align-items: center; gap: 7px; padding: 7px 15px; border-radius: 999px;
+    background: linear-gradient(90deg, var(--hot), var(--warm)); color: #0d0f14;
+    font: 500 13px var(--mono); text-decoration: none; transition: filter .2s;
+  }
+  a.kofi:hover { filter: brightness(1.1); }
+  a.kofi svg { width: 14px; height: 14px; flex: none; fill: currentColor; }
+  .badge { display: inline-block; margin-bottom: 12px; line-height: 0; }
+  .badge img { height: 28px; width: auto; border-radius: 6px; }
+  .card p.links { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-bottom: 0; }
+  .card p.note { margin: 8px 0 0; font: 13px/1.5 var(--mono); }
   footer { margin-top: 56px; font: 13px var(--mono); }
   a { color: var(--warm); }
   button:focus-visible, a:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; }
   @media (max-width: 640px) {
+    .kofi-more { display: none; }
     .hero { padding: 64px 0 48px; }
     .card { grid-template-columns: 1fr; padding: 24px; }
     .dial { max-width: 170px; grid-row: 1; }
   }
   @media (prefers-reduced-motion: reduce) {
     .status::before { animation: none; }
-    .card { transition: none; }
+    .card, a.kofi { transition: none; }
     .card:hover { transform: none; }
   }
 </style>
@@ -80,9 +93,16 @@
 <div class="wrap">
   <nav>
     <span>iu5gal</span>
-    <div class="switch" role="group" aria-label="Language / Lingua">
-      <button type="button" data-lang="en" lang="en">EN</button>
-      <button type="button" data-lang="it" lang="it">IT</button>
+    <div class="nav-right">
+      <a class="kofi" href="https://ko-fi.com/iu5gal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.5 2.4 4.5 6.2 4.5c2.3 0 4.3 1.3 5.8 3.5 1.5-2.2 3.5-3.5 5.8-3.5 3.8 0 5.8 4 4.2 7.2C19.5 16.4 12 21 12 21z"/></svg>
+        <span class="kofi-more en">Support me on</span><span class="kofi-more it">Sostienimi su</span>
+        <span>Ko-fi</span>
+      </a>
+      <div class="switch" role="group" aria-label="Language / Lingua">
+        <button type="button" data-lang="en" lang="en">EN</button>
+        <button type="button" data-lang="it" lang="it">IT</button>
+      </div>
     </div>
   </nav>
   <header class="hero">
@@ -93,16 +113,21 @@
     <h3 class="sec"><span class="en">My projects</span><span class="it">I miei progetti</span></h3>
     <article class="card">
       <div>
-        <span class="status en">In development</span>
-        <span class="status it">In sviluppo</span>
+        <span class="status en">Released</span>
+        <span class="status it">Pubblicato</span>
         <h2>Much Smarther Bridge</h2>
+        <a class="badge" href="https://github.com/homebridge/homebridge/wiki/Verified-Plugins"><img src="https://img.shields.io/badge/homebridge-verified-ff6b35?style=for-the-badge&amp;logo=homebridge&amp;logoColor=ffb547&amp;labelColor=2a3040" alt="Verified by Homebridge"></a>
         <div class="en">
           <p>A local bridge that brings the first-generation BTicino Smarther thermostat into smart home systems, starting with Apple Home. It runs on a Raspberry Pi and aims to recreate the thermostat's native behaviour as faithfully as possible, without replacing it.</p>
         </div>
         <div class="it">
           <p>Un bridge locale che porta il termostato BTicino Smarther di prima versione nei sistemi smart home, a partire da Apple Casa. Gira su un Raspberry Pi e punta a ricostruire il più fedelmente possibile il funzionamento nativo del termostato, senza sostituirlo.</p>
         </div>
-        <p><a href="https://github.com/iu5gal/much-smarther-bridge"><span class="en">View the repository</span><span class="it">Vai alla repository</span></a></p>
+        <p class="links">
+          <a href="https://github.com/iu5gal/homebridge-much-smarther/releases/latest"><span class="en">Latest release</span><span class="it">Ultima release</span></a>
+          <a href="https://www.npmjs.com/package/homebridge-much-smarther"><span class="en">Package on npm</span><span class="it">Pacchetto su npm</span></a>
+          <a href="https://github.com/iu5gal/homebridge-much-smarther"><span class="en">View the repository</span><span class="it">Vai alla repository</span></a>
+        </p>
       </div>
       <svg class="dial" viewBox="0 0 200 200" aria-hidden="true">
         <defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ffb547"/><stop offset="1" stop-color="#ff6b35"/></linearGradient></defs>
@@ -119,8 +144,8 @@
         <span class="status en">Awaiting review</span>
         <span class="status it">In attesa di revisione</span>
         <h2>Greenlight</h2>
-        <p class="en">An open-source desktop client for Xbox console and cloud streaming. I contribute translations, including the Italian one, and fixes proposed as pull requests. Highlights:</p>
-        <p class="it">Un client desktop open source per lo streaming di console Xbox e cloud gaming. Contribuisco con traduzioni, tra cui quella italiana, e correzioni proposte come pull request. In evidenza:</p>
+        <p class="en">An open-source desktop client for Xbox console and cloud streaming. I contribute translations, including the Italian one, and fixes proposed as pull requests. My personal build includes them while they await review. Highlights:</p>
+        <p class="it">Un client desktop open source per lo streaming di console Xbox e cloud gaming. Contribuisco con traduzioni, tra cui quella italiana, e correzioni proposte come pull request. La mia build personale le include in attesa della revisione. In evidenza:</p>
         <ul class="prs">
           <li><a href="https://github.com/unknownskl/greenlight/pull/1706"><b>#1706</b><span class="en">Italian translation</span><span class="it">Traduzione italiana</span></a></li>
           <li><a href="https://github.com/unknownskl/greenlight/pull/1717"><b>#1717</b><span class="en">Six new languages</span><span class="it">Sei nuove lingue</span></a></li>
@@ -130,8 +155,14 @@
           <li><a href="https://github.com/unknownskl/greenlight/pull/1707"><b>#1707</b><span class="en">Web UI fix with Express 5</span><span class="it">Correzione della Web UI con Express 5</span></a></li>
           <li><a href="https://github.com/unknownskl/greenlight/pull/1723"><b>#1723</b><span class="en">Console power and refresh buttons</span><span class="it">Pulsanti di accensione e aggiornamento per le console</span></a></li>
           <li><a href="https://github.com/unknownskl/greenlight/pull/1727"><b>#1727</b><span class="en">Mouse and keyboard improvements</span><span class="it">Miglioramenti a mouse e tastiera</span></a></li>
+          <li><a href="https://github.com/unknownskl/greenlight/pull/1752"><b>#1752</b><span class="en">Stream resolution setting</span><span class="it">Impostazione della risoluzione dello streaming</span></a></li>
         </ul>
-        <p><a href="https://github.com/unknownskl/greenlight/pulls?q=is%3Apr+author%3Aiu5gal"><span class="en">All my pull requests</span><span class="it">Tutte le mie pull request</span></a></p>
+        <p class="links">
+          <a href="https://github.com/iu5gal/greenlight/releases/latest"><span class="en">Download my latest build</span><span class="it">Scarica la mia ultima build</span></a>
+          <a href="https://github.com/unknownskl/greenlight/pulls?q=is%3Apr+author%3Aiu5gal"><span class="en">All my pull requests</span><span class="it">Tutte le mie pull request</span></a>
+        </p>
+        <p class="note en">Unsigned builds for macOS, Windows and Linux.</p>
+        <p class="note it">Build non firmate per macOS, Windows e Linux.</p>
       </div>
     </article>
     </section>
